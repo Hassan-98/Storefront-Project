@@ -11,7 +11,7 @@
     "migrate:down": "db-migrate reset",
     "clean": "rm -rf dist/ || true",
     "archive": "zip -r Archive.zip . -x src/**\\*",
-    "build": "npm run compile",
+    "build": "npm run lint && npm run format && npm run compile",
     "postbuild": "npm run archive",
     "deploy": "chmod +x ./bin/deploy.sh",
     "dev": "nodemon src/index.ts --watch \"src/**/*.{ts,tsx}\" -e ts,tsx",
