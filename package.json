@@ -1,0 +1,17 @@
+{
+  "name": "storefront",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install:client": "cd Storefront-Client && npm install",
+    "build:client": "cd Storefront-Client && npm run build",
+    "deploy:client": "cd Storefront-Client && npm deploy",
+    "install:server": "cd Storefront-API && npm install",
+    "test:server": "cd Storefront-API && npm run test",
+    "build:server": "cd Storefront-API && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

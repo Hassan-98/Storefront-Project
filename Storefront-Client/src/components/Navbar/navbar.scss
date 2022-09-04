@@ -1,0 +1,53 @@
+nav {
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  position: relative;
+
+  img {
+    width: 36px;
+    height: 36px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+
+    li {
+      padding: 8px 15px;
+      margin: 0 5px;
+      a {
+        color: #0d9b83;
+        text-decoration: none;
+        font-weight: bold;
+
+        &.active {
+          color: #04133b;
+          border-bottom: 1px solid #273c75;
+        }
+      }
+    }
+  }
+
+  .auth {
+    display: flex;
+    button {
+      border: none;
+      outline: none;
+      padding: 5px 25px;
+      background: #2F2E41;
+      color: #fff;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover {
+        background: #3F3D56;
+      }
+    }
+  }
+}

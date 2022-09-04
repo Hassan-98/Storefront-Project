@@ -1,0 +1,28 @@
+{
+  "defaultEnv": { "ENV": "NODE_ENV" },
+  "development": {
+    "driver": "pg",
+    "host": { "ENV": "DATABASE_HOST" },
+    "port": { "ENV": "DATABASE_PORT" },
+    "database": { "ENV": "DATABASE_NAME" },
+    "user": { "ENV": "DATABASE_USER" },
+    "password": { "ENV": "DATABASE_PASSWORD" }
+  },
+  "testing": {
+    "driver": "pg",
+    "host": { "ENV": "DATABASE_HOST" },
+    "port": { "ENV": "DATABASE_PORT" },
+    "database": { "ENV": "TEST_DATABASE_NAME" },
+    "user": { "ENV": "DATABASE_USER" },
+    "password": { "ENV": "DATABASE_PASSWORD" }
+  },
+  "production": {
+    "driver": "pg",
+    "host": { "ENV": "DATABASE_HOST_PROD" },
+    "port": { "ENV": "DATABASE_PORT_PROD" },
+    "database": { "ENV": "DATABASE_NAME_PROD" },
+    "user": { "ENV": "DATABASE_USER_PROD" },
+    "password": { "ENV": "DATABASE_PASSWORD_PROD" }
+  },
+  "sql-file" : true
+}

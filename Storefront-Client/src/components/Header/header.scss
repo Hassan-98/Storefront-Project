@@ -1,0 +1,45 @@
+@import "../../styles/mixins.scss";
+
+header {
+  height: 500px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+
+  @include md {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    p {
+      width: 65%; 
+      margin: 0 auto;
+      text-align: center;
+      color: #3f3d5677;
+
+      &:first-of-type {
+        font-weight: bold;
+      }
+    }
+  
+    h1 {
+      font-size: 3.5em;
+      text-align: center;
+      text-transform: uppercase;
+      color: #00BFA6;
+    }
+  }
+
+
+  img {
+    width: auto;
+
+    @include md {
+      margin-top: 25px;
+      height: 250px;
+    }
+  }
+}

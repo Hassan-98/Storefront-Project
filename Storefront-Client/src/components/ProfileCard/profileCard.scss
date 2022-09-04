@@ -1,0 +1,22 @@
+.profile-card {
+  width: 550px;
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 8px;
+  margin: 80px auto;
+
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  .details {
+    p {
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+  }
+}
