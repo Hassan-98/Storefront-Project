@@ -5,7 +5,7 @@ import cors from 'cors';
 import compression from 'compression';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import dotenv from 'dotenv';
+import config from './configs/vars.config';
 
 //= Routes
 import routes from './routes';
@@ -13,11 +13,8 @@ import routes from './routes';
 //= Error Handler
 import errorHandlerMiddleware from './middlewares/error.handler.middleware';
 
-//= Read .env file
-dotenv.config();
-
 //= Server Port and Host
-const PORT = process.env.PORT || 9999;
+const PORT = config.port || 9999;
 
 //= Create express app
 export const app: Application = express();

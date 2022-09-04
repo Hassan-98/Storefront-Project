@@ -9,7 +9,8 @@
     "deploy:client": "cd Storefront-Client && npm run deploy",
     "install:server": "cd Storefront-API && npm install",
     "test:server": "cd Storefront-API && npm run test",
-    "build:server": "cd Storefront-API && npm run build"
+    "build:server": "cd Storefront-API && npm run build",
+    "deploy:server": "cd Storefront-API && npm run deploy"
   },
   "keywords": [],
   "author": "",

@@ -1,10 +1,11 @@
 import bcrypt from 'bcrypt';
 import database from '../configs/db.config';
 import generateToken from '../utils/generateToken';
+import config from '../configs/vars.config';
 
 import { User as IUser } from '../types/User.interface';
 
-const { BCRYPT_SECRET, BCRYPT_SALT } = process.env;
+const { bcrypt: BCRYPT } = config;
 
 export default class User {
   // get all users
@@ -41,8 +42,8 @@ export default class User {
       const { firstname, lastname, password } = user;
 
       const hashedPassword: string = bcrypt.hashSync(
-        password + BCRYPT_SECRET,
-        parseInt(BCRYPT_SALT as string)
+        password + BCRYPT.secret,
+        parseInt(BCRYPT.salt as string)
       );
 
       const connection = await database.connect();
@@ -82,7 +83,7 @@ export default class User {
       if (!User) throw new Error('User is not found');
 
       const isPasswordMatch = bcrypt.compareSync(
-        password + BCRYPT_SECRET,
+        password + BCRYPT.secret,
         User.password
       );
 

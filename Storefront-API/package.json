@@ -13,6 +13,7 @@
     "archive": "zip -r Archive.zip . -x src/**\\*",
     "build": "npm run lint && npm run format && npm run compile",
     "postbuild": "npm run archive",
+    "deploy": "chmod +x ./bin/deploy.sh",
     "dev": "nodemon src/index.ts --watch \"src/**/*.{ts,tsx}\" -e ts,tsx",
     "start": "node dist/index.js",
     "pretest": "npm run clean && npm run compile && db-migrate --env testing reset && db-migrate --env testing up ",

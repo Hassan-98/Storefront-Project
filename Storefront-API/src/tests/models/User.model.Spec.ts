@@ -1,12 +1,13 @@
 import database from '../../configs/db.config';
 import UserModel from '../../models/User.model';
 import bcrypt from 'bcrypt';
+import config from '../../configs/vars.config';
 
 import { User } from '../../types/User.interface';
 
 const USER = new UserModel();
 
-const { BCRYPT_SECRET } = process.env;
+const { bcrypt: BCRYPT } = config;
 
 describe('Test User Model', () => {
   it('getUsers method should be exists', () => {
@@ -37,7 +38,7 @@ describe('Test User Model', () => {
     expect(user.lastname).toBe('ali');
     expect(user.password).not.toEqual('hassanali123');
     expect(
-      bcrypt.compareSync('hassanali123' + BCRYPT_SECRET, user.password)
+      bcrypt.compareSync('hassanali123' + BCRYPT.secret, user.password)
     ).toBe(true);
     expect(user.token).toBeDefined();
   });
@@ -60,7 +61,7 @@ describe('Test User Model', () => {
     expect(user.lastname).toEqual('ali');
     expect(user.password).not.toEqual('hassanali123');
     expect(
-      bcrypt.compareSync('hassanali123' + BCRYPT_SECRET, user.password)
+      bcrypt.compareSync('hassanali123' + BCRYPT.secret, user.password)
     ).toBe(true);
   });
 

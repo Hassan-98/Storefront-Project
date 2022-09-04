@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import config from '../configs/vars.config';
 
-const { JWT_SECRET } = process.env;
+const { jwt_secret } = config;
 
 export const requireAuth = async (
   req: Request,
@@ -15,7 +16,7 @@ export const requireAuth = async (
 
     const token = authorization.split(' ')[1];
 
-    const userId = jwt.verify(token, JWT_SECRET as string);
+    const userId = jwt.verify(token, jwt_secret as string);
 
     req.user_id = +userId;
 

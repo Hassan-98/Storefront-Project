@@ -1,19 +1,16 @@
 import { Pool } from 'pg';
-import dotenv from 'dotenv';
-
-//= Read .env file
-dotenv.config();
+import config from './vars.config';
 
 //= Create Postgres Pool
 const database = new Pool({
-  user: process.env.DATABASE_USER,
-  host: process.env.DATABASE_HOST,
+  user: config.db.user,
+  host: config.db.host,
   database:
-    process.env.ENV === 'testing'
-      ? process.env.TEST_DATABASE_NAME
-      : process.env.DATABASE_NAME,
-  password: process.env.DATABASE_PASSWORD,
-  port: (process.env.DATABASE_PORT || 5432) as number,
+    config.testingEnv === 'testing'
+      ? config.db.test_db
+      : config.db.name,
+  password: config.db.password,
+  port: (config.db.port || 5432) as number,
 });
 
 export default database;

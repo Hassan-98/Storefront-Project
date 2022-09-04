@@ -1,7 +1,8 @@
 import generateToken from '../../utils/generateToken';
 import jwt from 'jsonwebtoken';
+import config from '../../configs/vars.config';
 
-const { JWT_SECRET } = process.env;
+const { jwt_secret: JWT_SECRET } = config;
 
 describe('Test generateToken utility function', () => {
   let token: string;
