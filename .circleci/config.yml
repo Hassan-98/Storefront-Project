@@ -4,7 +4,7 @@ orbs:
   eb: circleci/aws-elastic-beanstalk@2.0.1
   aws-cli: circleci/aws-cli@3.1.1
 jobs:
-  build:
+  client:
     docker:
       - image: "cimg/node:14.15"
     steps:
@@ -14,36 +14,35 @@ jobs:
       - run:
           name: Install Front-End Dependencies
           command: |
-            echo "NODE --version" 
-            echo $(node --version)
-            echo "NPM --version" 
-            echo $(npm --version)
-            npm run install:client       
+            npm run install:client
+      - run:
+          name: Build Front-End App
+          command: |
+            npm run build:client   
+      - run:
+          name: Deploy Front-End App
+          command: |
+            npm run deploy:client
+  api:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - node/install:
+          node-version: '14.15'         
+      - checkout 
       - run:
           name: Install API Dependencies
           command: |
             npm run install:server
       - run:
-          name: Front-End Build
-          command: |
-            npm run build:client   
-      - run:
-          name: API Build
+          name: Build API
           command: |
             npm run build:server
-  deploy:
-    docker:
-      - image: "cimg/base:stable"
-    steps:
-      - node/install:
-          node-version: '14.15' 
       - eb/setup
       - aws-cli/setup
       - run:
-          name: Deploy App
+          name: Deploy API
           command: |
-            echo $(cd Storefront-Client && ls)
-            npm run deploy:client
             aws s3 cp ./Storefront-API/Archive.zip s3://storefront-hassan/
             aws elasticbeanstalk create-application-version --application-name $EB_APP --version-label <<pipeline.git.revision>> --source-bundle S3Bucket="$EB_BUCKET",S3Key="Archive.zip"
             aws elasticbeanstalk update-environment --application-name $EB_APP --environment-name $EB_ENV --version-label <<pipeline.git.revision>>
@@ -51,7 +50,5 @@ jobs:
 workflows:
   Storefront:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+      - client
+      - api
