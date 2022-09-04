@@ -19,6 +19,7 @@ jobs:
           name: Build Front-End App
           command: |
             npm run build:client   
+      - aws-cli/setup
       - run:
           name: Deploy Front-End App
           command: |
