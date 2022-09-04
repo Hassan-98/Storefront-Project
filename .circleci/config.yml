@@ -49,7 +49,7 @@ jobs:
             aws elasticbeanstalk update-environment --application-name $EB_APP --environment-name $EB_ENV --version-label <<pipeline.git.revision>>
             
 workflows:
-  udagram:
+  Storefront:
     jobs:
       - build
       - deploy:
