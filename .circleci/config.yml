@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Deploy App
           command: |
-            echo $(ls)
+            echo $(cd Storefront-Client && ls)
             npm run deploy:client
             aws s3 cp ./Storefront-API/Archive.zip s3://storefront-hassan/
             aws elasticbeanstalk create-application-version --application-name $EB_APP --version-label <<pipeline.git.revision>> --source-bundle S3Bucket="$EB_BUCKET",S3Key="Archive.zip"
