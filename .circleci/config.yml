@@ -45,9 +45,10 @@ jobs:
           name: Deploy API
           command: |
             aws s3 cp ./Storefront-API/Archive.zip s3://storefront-hassan/
-            npm run deploy:server
             aws elasticbeanstalk create-application-version --application-name "storefront api" --version-label <<pipeline.git.revision>> --source-bundle S3Bucket="storefront-hassan",S3Key="Archive.zip"
             aws elasticbeanstalk update-environment --application-name "storefront api" --environment-name "Storefrontapi-env-1" --version-label <<pipeline.git.revision>>
+            eb use Storefrontapi-env-1
+            npm run deploy:server
             
 workflows:
   Storefront:
